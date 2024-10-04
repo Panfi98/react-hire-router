@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import './App.css'
 import Dashboard from './pages/Dashboard';
 import PersonProfile from './pages/PersonProfile';
@@ -16,6 +16,12 @@ export default function App() {
     })
   },[])
 
+  const handleHiring = (newPerson, wage) =>{
+    setHiredPeople(prev => [...prev, { ...newPerson, wage: wage }])
+  }
+  useEffect(() => {
+    console.log(hiredPeople)
+  }, [hiredPeople])
 
   return (
     <>
@@ -28,8 +34,8 @@ export default function App() {
         </nav>
       </header>
       <Routes>
-        <Route path='/' element={<Dashboard people={people}/>}/>
-        <Route path='/view/:id' element={<PersonProfile people={people}/>}/>
+        <Route path='/' element={<Dashboard people={people} hiredPeople={hiredPeople}/>}/>
+        <Route path='/view/:id' element={<PersonProfile people={people} handler={handleHiring}/>}/>
       </Routes>
     </>
   )

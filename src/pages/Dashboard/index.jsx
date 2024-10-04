@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import PeopleList from './components/PeopleList'
 
-function Dashboard({people}) {
+function Dashboard({people, hiredPeople}) {
   
   return (
     <main className="dashboard-layout">
@@ -11,7 +11,7 @@ function Dashboard({people}) {
       </section>
       <section>
         <h2>Hired People</h2>
-        {/* {<PeopleList people={hiredPeople} />} */}
+         {<PeopleList people={hiredPeople} />} 
       </section>
     </main>
   )
